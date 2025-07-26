@@ -1,15 +1,16 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route } from "react-router-dom";
+import Login from "./components/User/Login";
+import LandingPage from "./pages/Landingpage";
+
+
 
 function App() {
   return (
-    <div className="text-center p-6">
-      <h1 className="text-3xl font-bold">TrackZen Attendance System</h1>
-    </div>
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/login" element={<Login />} />
+    </Routes>
   );
 }
 
-
-export default App
+export default App;
