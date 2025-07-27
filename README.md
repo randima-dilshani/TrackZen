@@ -9,24 +9,19 @@ Welcome to **TrackZen**, a modern and secure full-stack Employee Attendance Mana
 
 ✨ TrackZen is built using the MERN stack (MongoDB, Express.js, React, Node.js) with modern styling from Ant Design and animations powered by Framer Motion. Key features include:
 
-🧑‍💼 Role-based authentication (Admin & Employee)
+- 🧑‍💼 Role-based authentication (Admin & Employee)
 
-⏱️ Mark check-in and check-out with timestamps
+- ⏱️ Mark check-in and check-out with timestamps
 
-📅 View attendance logs (per employee)
+- 📅 View attendance logs (per employee)
 
-🗂️ Admin dashboard with attendance insights
+- 🗂️ Admin dashboard with attendance insights
 
-🔒 JWT-based session security
+- 🔒 JWT-based session security
 
-📡 Axios with token interceptor
+- 📡 Axios with token interceptor
 
-⚙️ Modular API design using Express
-
-- ## 🛠️ Tech Stack
-
-Frontend	Backend	Database	UI & Animations	Utilities
-React + Vite	Node.js + Express	MongoDB	Ant Design, Framer Motion	Axios, JWT, React Router
+- ⚙️ Modular API design using Express
 
 ---
 
