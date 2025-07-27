@@ -71,8 +71,7 @@ const GetMyAttendanceLogs = async (req, res, next) => {
   }
 
   const employeeId = req.auth.id;
-  console.log("Fetching logs for employee:", employeeId);
-
+  
   try {
     const logs = await AttendanceService.findAll({ employeeId });
     res.status(200).json(logs);
@@ -91,6 +90,7 @@ const GetAllAttendanceRecords = async (req, res, next) => {
     next(error);
   }
 };
+
 
 module.exports = {
   MarkCheckIn,

@@ -39,35 +39,13 @@ const Navbar = () => {
           </span>
         </motion.div>
 
-        {/* Navigation */}
-        <nav className="hidden md:flex space-x-8 text-base tracking-wider text-white font-medium">
-          <Link to="#about" className="hover:text-blue-400 transition">
-            About
-          </Link>
-          <Link to="#features" className="hover:text-blue-400 transition">
-            Features
-          </Link>
-          <Link to="#pricing" className="hover:text-blue-400 transition">
-            Pricing
-          </Link>
-          <Link to="#contact" className="hover:text-blue-400 transition">
-            Contact
-          </Link>
-        </nav>
-
         {/* Buttons */}
         <div className="flex gap-3">
-          <Link to="/login">
-            <Button
-              variant="outline"
-              className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white bg-transparent"
-            >
-              Login
-            </Button>
-          </Link>
-          <Link to="/signup">
-            <Button className="bg-blue-600 hover:bg-blue-500">Sign Up</Button>
-          </Link>
+ <Link to="/register">
+  <Button className="px-4 py-2 text-base bg-blue-600 hover:bg-blue-500">
+    Sign Up
+  </Button>
+</Link>
         </div>
       </div>
     </div>

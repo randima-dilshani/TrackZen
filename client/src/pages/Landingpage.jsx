@@ -86,7 +86,7 @@ const LandingPage = () => {
             transition={{ duration: 0.8, delay: 0.9 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
           >
-            <Link to="/admin-login">
+            <Link to="/login">
               <Button
                 size="lg"
                 className="group relative bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-500 hover:to-purple-400 text-white px-10 py-4 text-lg font-semibold rounded-xl shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105 border-0"
@@ -99,7 +99,7 @@ const LandingPage = () => {
                 </span>
               </Button>
             </Link>
-            <Link to="/employee-login">
+            <Link to="/login">
               <Button
                 size="lg"
                 className="group relative bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white px-10 py-4 text-lg font-semibold rounded-xl shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-105 border-0"

@@ -6,9 +6,10 @@ const save = async (attendance, session) => {
 
 const findAll = async (queryObj = {}) => {
   return await Attendance.find(queryObj)
-    .populate("employeeId", "email")
+    .populate("employeeId", "email employeeName")  
     .sort({ createdAt: -1 });
 };
+
 
 const findById = async (id) => {
   return await Attendance.findById(id).populate("employeeId", "email");
