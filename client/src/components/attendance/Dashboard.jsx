@@ -1,14 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import {
-  Clock,
-  Calendar,
-  LogOut,
-  History,
-  CheckCircle,
-  XCircle,
-} from "lucide-react";
+import { Clock,Calendar,LogOut,History,CheckCircle,XCircle } from "lucide-react";
 import { Button } from "../../ui/Button";
 import { Card, CardContent, CardHeader, CardTitle } from "../../ui/Card";
 import { useAuth } from "../../context/AuthContext";
@@ -187,7 +180,6 @@ const EmployeePortal = () => {
           </Card>
         </motion.div>
 
-        {/* Attendance and Summary */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
           {/* Attendance Card */}
           <motion.div

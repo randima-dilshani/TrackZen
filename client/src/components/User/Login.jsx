@@ -78,8 +78,6 @@ const handleLogin = async (e) => {
 
   return (
     <div className="relative h-screen flex items-center justify-center px-4 sm:px-5 lg:px-0 overflow-hidden bg-transparent">
-
-      {/* 🔙 Back Button */}
  <button
   onClick={() => navigate("/")}
   className="absolute top-6 left-4 sm:left-8 bg-blue-900 bg-opacity-70 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-blue-600 hover:bg-blue-800 hover:bg-opacity-80 transition-all duration-300 text-xs sm:text-sm z-20 shadow-md"

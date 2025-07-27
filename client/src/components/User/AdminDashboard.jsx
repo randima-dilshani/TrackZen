@@ -1,20 +1,7 @@
 import { useState, useEffect, useMemo } from "react"
 import { useNavigate } from "react-router-dom"
 import { motion } from "framer-motion"
-import {
-  LogOut,
-  Users,
-  Calendar,
-  Clock,
-  Search,
-  RefreshCw,
-  Filter,
-  Download,
-  Eye,
-  MoreVertical,
-  UserCheck,
-  AlertCircle,
-} from "lucide-react"
+import { LogOut,Users,Calendar,Clock,Search,RefreshCw,Filter,Download,Eye,MoreVertical,UserCheck,AlertCircle } from "lucide-react"
 import { Button } from "../../ui/Button"
 import { Card, CardContent, CardHeader, CardTitle } from "../../ui/Card"
 import { useAuth } from "../../context/AuthContext"
@@ -52,7 +39,6 @@ const AdminDashboard = () => {
   const [searchTerm, setSearchTerm] = useState("")
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
-  // Pagination states
   const [currentPage, setCurrentPage] = useState(1)
   const logsPerPage = 10
 
@@ -170,7 +156,6 @@ const AdminDashboard = () => {
         className="fixed top-0 left-0 w-full z-50 backdrop-blur-2xl bg-black/20 border-b border-white/10 shadow-2xl"
       >
         <div className="flex justify-between items-center px-6 h-[80px] max-w-7xl mx-auto">
-          {/* Logo + TrackZen */}
         <div className="flex items-center space-x-3">
            <img src="/logo.jpg" alt="TrackZen Logo" className="h-8 w-8" />
   <span className="text-xl font-bold text-white tracking-wide">TrackZen</span>
@@ -202,7 +187,6 @@ const AdminDashboard = () => {
       </motion.div>
 
       <main className="pt-24 px-6 max-w-7xl mx-auto relative z-10">
-          {/* Admin Dashboard Heading */}
   <motion.h1
   variants={itemVariants}
   className="text-4xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 mb-10 tracking-wide"

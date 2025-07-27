@@ -92,7 +92,6 @@ const SignUp = () => {
         initial="hidden"
         animate="visible"
       >
-        {/* Left Side Image */}
         <motion.div
           className="hidden md:flex flex-1 bg-blue-100 items-center justify-center rounded-l-2xl"
           variants={imageVariants}

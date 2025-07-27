@@ -17,7 +17,6 @@ const LandingPage = () => {
       <Navbar />
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black pt-24">
-        {/* Background Layers */}
         <img
           src="/background.jpeg"
           alt="Hero Background"
@@ -32,7 +31,6 @@ const LandingPage = () => {
         <div className="absolute top-40 right-32 text-purple-400/20 text-xl font-mono animate-bounce z-20">👥</div>
         <div className="absolute bottom-32 left-40 text-cyan-400/20 text-lg font-mono animate-ping z-20">TRACK</div>
 
-        {/* Main Content */}
         <div
           className={`relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center transition-all duration-1000 ease-out ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
