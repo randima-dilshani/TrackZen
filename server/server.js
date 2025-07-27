@@ -17,7 +17,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use(
   cors({
-    origin: "https://track-zen.vercel.app",
+    origin: ["http://localhost:5173", "https://track-zen.vercel.app"],
     credentials: true,
   })
 );
