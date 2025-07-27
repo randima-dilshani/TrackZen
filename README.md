@@ -49,7 +49,7 @@ JWT_SECRET=your_jwt_secret
 
 ▶️ Start the server:
 
-npm run dev
+npm start
 
 ## 3. 💻 Frontend Setup
 
