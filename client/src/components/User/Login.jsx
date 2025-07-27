@@ -30,6 +30,7 @@ const Login = () => {
   const { setAuth } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
   const resetForm = () => {
@@ -38,54 +39,53 @@ const Login = () => {
     setErrorMsg("");
   };
 
-const handleLogin = async (e) => {
-  e.preventDefault();
-  setErrorMsg("");
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setErrorMsg("");
 
-  const loginData = { email, password };
+    const loginData = { email, password };
 
-  try {
-    const response = await axios.post("/auth/login", loginData);
+    try {
+      const response = await axios.post("/auth/login", loginData);
 
-    if (response.status === 200) {
-      const token = response.data.token;
-      const user = response.data.user;
+      if (response.status === 200) {
+        const token = response.data.token;
+        const user = response.data.user;
 
-      localStorage.setItem("token", token);
-      localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(user));
 
-      setAuth({ token, user });
+        setAuth({ token, user });
 
-      toast.success("Login Successful!");
+        toast.success("Login Successful!");
 
-      setTimeout(() => {
-        if (user.role === "admin") {
-          navigate("/admindashboard");   // Redirect admins here
-        } else {
-          navigate("/dashboard"); // Redirect others here
-        }
-      }, 1000);
+        setTimeout(() => {
+          if (user.role === "admin") {
+            navigate("/admindashboard");
+          } else {
+            navigate("/dashboard");
+          }
+        }, 1000);
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      setErrorMsg("Incorrect email or password");
+      toast.error("Incorrect email or password");
     }
-  } catch (error) {
-    console.error("Login error:", error);
-    setErrorMsg("Incorrect email or password");
-    toast.error("Incorrect email or password");
-  }
 
-  resetForm();
-};
-
+    resetForm();
+  };
 
   return (
     <div className="relative h-screen flex items-center justify-center px-4 sm:px-5 lg:px-0 overflow-hidden bg-transparent">
- <button
-  onClick={() => navigate("/")}
-  className="absolute top-6 left-4 sm:left-8 bg-blue-900 bg-opacity-70 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-blue-600 hover:bg-blue-800 hover:bg-opacity-80 transition-all duration-300 text-xs sm:text-sm z-20 shadow-md"
->
-  ← Back to Home
-</button>
+      <button
+        onClick={() => navigate("/")}
+        className="absolute top-6 left-4 sm:left-8 bg-blue-900 bg-opacity-70 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-blue-600 hover:bg-blue-800 hover:bg-opacity-80 transition-all duration-300 text-xs sm:text-sm z-20 shadow-md"
+      >
+        ← Back to Home
+      </button>
 
- {/* Animated Blobs */}
+      {/* Animated Blobs */}
       <div className="absolute bottom-[-100px] left-[50%] translate-x-[-50%] w-80 h-80 sm:w-[500px] sm:h-[500px] bg-blue-600 rounded-full filter blur-3xl opacity-25 animate-blob3 z-0"></div>
       
       <motion.div
@@ -137,16 +137,25 @@ const handleLogin = async (e) => {
               onChange={(e) => setEmail(e.target.value)}
             />
 
-            <input
-              className={`w-full px-4 sm:px-5 py-2.5 sm:py-3 rounded-md bg-gray-100 border ${
-                errorMsg ? "border-red-400" : "border-gray-200"
-              } placeholder-gray-500 text-sm sm:text-base focus:outline-none focus:border-gray-400 focus:bg-white`}
-              type="password"
-              placeholder="Password"
-              required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <div className="relative">
+              <input
+                className={`w-full px-4 sm:px-5 py-2.5 sm:py-3 rounded-md bg-gray-100 border ${
+                  errorMsg ? "border-red-400" : "border-gray-200"
+                } placeholder-gray-500 text-sm sm:text-base focus:outline-none focus:border-gray-400 focus:bg-white pr-10`}
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <button
+                type="button"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-sm text-gray-500 focus:outline-none"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? "🙈" : "👁️"}
+              </button>
+            </div>
 
             {errorMsg && (
               <div className="text-red-500 text-xs sm:text-sm text-center">{errorMsg}</div>

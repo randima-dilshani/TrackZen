@@ -29,6 +29,8 @@ const SignUp = () => {
   const [NIC, setNIC] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const resetForm = () => {
     setEmployeeName("");
@@ -76,13 +78,13 @@ const SignUp = () => {
   };
 
   return (
-   <div className="relative h-screen flex items-center justify-center px-4 sm:px-5 lg:px-0 overflow-hidden">
-  <button
-  onClick={() => navigate("/")}
-  className="absolute top-6 left-4 sm:left-8 bg-blue-900 bg-opacity-70 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-blue-600 hover:bg-blue-800 hover:bg-opacity-80 transition-all duration-300 text-xs sm:text-sm z-20 shadow-md"
->
-  ← Back to Home
-</button>
+    <div className="relative h-screen flex items-center justify-center px-4 sm:px-5 lg:px-0 overflow-hidden">
+      <button
+        onClick={() => navigate("/")}
+        className="absolute top-6 left-4 sm:left-8 bg-blue-900 bg-opacity-70 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-blue-600 hover:bg-blue-800 hover:bg-opacity-80 transition-all duration-300 text-xs sm:text-sm z-20 shadow-md"
+      >
+        ← Back to Home
+      </button>
       {/* Animated Blobs */}
       <div className="absolute bottom-[-100px] left-[50%] translate-x-[-50%] w-80 h-80 sm:w-[500px] sm:h-[500px] bg-blue-600 rounded-full filter blur-3xl opacity-25 animate-blob3 z-0"></div>
 
@@ -152,22 +154,41 @@ const SignUp = () => {
               required
             />
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              <input
-                className="input-style"
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-              <input
-                className="input-style"
-                type="password"
-                placeholder="Confirm Password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
-              />
+              <div className="relative">
+                <input
+                  className="input-style pr-10"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-sm focus:outline-none"
+                >
+                  {showPassword ? "🙈" : "👁️"}
+                </button>
+              </div>
+
+              <div className="relative">
+                <input
+                  className="input-style pr-10"
+                  type={showConfirmPassword ? "text" : "password"}
+                  placeholder="Confirm Password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-sm focus:outline-none"
+                >
+                  {showConfirmPassword ? "🙈" : "👁️"}
+                </button>
+              </div>
             </div>
 
             <motion.button

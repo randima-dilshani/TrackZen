@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Clock,Calendar,LogOut,History,CheckCircle,XCircle } from "lucide-react";
+import { Clock, Calendar, LogOut, History, CheckCircle, XCircle } from "lucide-react";
 import { Button } from "../../ui/Button";
 import { Card, CardContent, CardHeader, CardTitle } from "../../ui/Card";
 import { useAuth } from "../../context/AuthContext";
 import axiosInstance from "../../util/axios";
+
+// ✅ Import Toast
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const buttonHover = {
   scale: 1.05,
@@ -55,8 +59,7 @@ const EmployeePortal = () => {
         setIsCheckedIn(todayLog.checkIn && !todayLog.checkOut);
 
         if (todayLog.checkIn && todayLog.checkOut) {
-          const diff =
-            new Date(todayLog.checkOut) - new Date(todayLog.checkIn);
+          const diff = new Date(todayLog.checkOut) - new Date(todayLog.checkIn);
           const hours = Math.floor(diff / (1000 * 60 * 60));
           const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
           const seconds = Math.floor((diff % (1000 * 60)) / 1000);
@@ -82,9 +85,16 @@ const EmployeePortal = () => {
       const res = await axiosInstance.post("/attendance/checkin");
       setIsCheckedIn(true);
       setCheckInTime(new Date(res.data.checkIn));
+      toast.success("Checked in successfully!");
       fetchAttendanceLogs();
     } catch (err) {
-      console.error("Check-in error:", err.response?.data || err.message);
+      const errorMessage = err.response?.data?.message || err.message;
+      if (errorMessage.toLowerCase().includes("already checked in")) {
+        toast.error("You have already checked in today.");
+      } else {
+        console.error("Check-in error:", errorMessage);
+        toast.error("Failed to check in.");
+      }
     }
   };
 
@@ -94,9 +104,16 @@ const EmployeePortal = () => {
       setIsCheckedIn(false);
       setCheckOutTime(new Date(res.data.checkOut));
       setCheckInTime(null);
+      toast.success("Checked out successfully!");
       fetchAttendanceLogs();
     } catch (err) {
-      console.error("Check-out error:", err.response?.data || err.message);
+      const errorMessage = err.response?.data?.message || err.message;
+      if (errorMessage.toLowerCase().includes("already checked out")) {
+        toast.error("You have already checked out today.");
+      } else {
+        console.error("Check-out error:", errorMessage);
+        toast.error("Failed to check out.");
+      }
     }
   };
 
@@ -140,6 +157,9 @@ const EmployeePortal = () => {
       transition={{ duration: 0.8 }}
       className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white"
     >
+      {/* ✅ Toast Container */}
+      <ToastContainer position="top-right" autoClose={4000} theme="dark" />
+
       <div className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/80 border-b border-gray-700/50 shadow-lg">
         <div className="flex justify-between items-center px-4 sm:px-6 md:px-12 h-[80px]">
           <div className="flex items-center space-x-3">
